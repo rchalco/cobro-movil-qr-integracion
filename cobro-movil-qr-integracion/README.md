@@ -70,15 +70,41 @@ El día que la clave deje de venir compilada, se borra `sembrar()` y el resto si
 ### Empaquetar con Capacitor
 
 ```bash
-npm run build
-npx cap add android      # la primera vez
-npx cap sync android     # registra los plugins nativos (llavero, impresora térmica)
-npx cap open android
+npm run android:sync     # build + cap sync (copia dist y registra los plugins)
+npm run android:open     # lo anterior + abre Android Studio
 ```
 
-`capacitor.config.json` apunta a `webDir: "dist"`. En el emulador de Android, `localhost`
-es el propio teléfono: use `VITE_QR_BASE_URL="http://10.0.2.2:5000"` para alcanzar la
-máquina anfitriona.
+La primera vez la plataforma ya está creada (`android/`). Si hubiera que rehacerla:
+`npx cap add android` — **`cap init` no crea plataformas**, solo escribe
+`capacitor.config.json`, y además toma sus argumentos como `[appName] [appId]`.
+
+**El proyecto está fijado en Capacitor 7**, no por inercia: `capacitor-thermal-printer`
+llega hasta 0.2.5 y declara `@capacitor/core ^7.0.0`. No hay versión para Capacitor 8, y
+la impresión es una funcionalidad central aquí. El CLI, `@capacitor/android`, el core y el
+plugin de llavero están todos en 7.
+
+#### Lo que hubo que agregar al proyecto nativo
+
+Dos cosas que Capacitor no genera y sin las cuales el APK falla **en silencio**:
+
+- **`BLUETOOTH_SCAN`** en el manifiesto. El plugin de impresora solo declara
+  `BLUETOOTH_CONNECT`, que alcanza para imprimir en una impresora ya emparejada pero no
+  para descubrirla: `startScan()` en la pantalla Impresora no devuelve nada y tampoco da
+  error. Van también los permisos legacy para Android 11 y anteriores, donde descubrir por
+  Bluetooth exige permiso de ubicación aunque no se use la ubicación.
+- **`network_security_config.xml`**. El proxy se alcanza por HTTP y desde Android 9 el
+  tráfico en claro está bloqueado; sin esto toda llamada falla en la capa de red y la
+  aplicación solo muestra «no hay conexión con el servidor». Está habilitado **por
+  dominio** (`10.0.2.2`, `localhost`) para que el permiso no alcance a cualquier servidor.
+  **Para probar en un teléfono real hay que agregar ahí la IP de la máquina del proxy** y
+  volver a compilar.
+
+Ambos archivos se versionan; lo que `cap sync` regenera (`assets/public/`,
+`capacitor.config.json` nativo, `.gradle/`) está en `.gitignore` — eso mantiene la API Key
+fuera del repositorio, porque viaja dentro de los assets copiados.
+
+En el emulador, `localhost` es el propio teléfono: use
+`VITE_QR_BASE_URL="http://10.0.2.2:5000"` para alcanzar la máquina anfitriona.
 
 ## Diagnóstico de fallos
 
