@@ -1,0 +1,63 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.tsbuildinfo
+
+.eslintcache
+
+# Cypress
+/cypress/videos/
+/cypress/screenshots/
+
+# Vitest
+__screenshots__/
+
+# Vite
+*.timestamp-*-*.mjs
+
+# Variables de entorno locales: llevan la API Key del proxy y no deben versionarse.
+# `.env.example` si se versiona: es la plantilla y solo tiene marcadores de posicion.
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Capacitor: lo que `cap sync` copia dentro del proyecto nativo se reconstruye en
+# cada sincronizacion; versionarlo produce conflictos en cada build.
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/capacitor-cordova-android-plugins/
+android/.gradle/
+android/local.properties
+ios/App/App/public/
+ios/App/Pods/
+
+# Firmas de Android: una llave filtrada permite publicar un APK que el dispositivo
+# acepta como si fuera el nuestro.
+*.keystore
+*.jks
+key.properties

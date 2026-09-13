@@ -1,0 +1,308 @@
+/* -----------------------------------------------------------
+   Lenguaje visual heredado de Venta Express (Iza-pub).
+   Se conservan los nombres de los tokens --pos-* y su escala;
+   la paleta se lleva a un azul institucional sobrio y se baja
+   el brillo de los acentos: es una pantalla de cobro de una
+   entidad financiera, no un punto de venta.
+   ----------------------------------------------------------- */
+
+:root {
+  --pos-primary: #0f4372;
+  --pos-primary-dark: #0a3157;
+  --pos-secondary: #1b7f8c;
+  --pos-gray: #616e7d;
+
+  --pos-bg-page: #f4f7fb;
+  --pos-bg-card: #ffffff;
+  --pos-bg-soft: #f7fafc;
+  --pos-bg-soft-2: #eef4fa;
+
+  --pos-border: rgba(15, 67, 114, 0.14);
+  --pos-border-soft: rgba(15, 67, 114, 0.07);
+  --pos-border-strong: rgba(15, 67, 114, 0.22);
+
+  --pos-text: #1c2b36;
+  --pos-text-soft: #6b7c8a;
+  --pos-text-title: #123f64;
+
+  --pos-success: #1a7a32;
+  --pos-success-soft: rgba(26, 122, 50, 0.09);
+  --pos-warning: #8a5a00;
+  --pos-warning-soft: rgba(255, 176, 32, 0.1);
+  --pos-danger: #b3261e;
+  --pos-danger-soft: rgba(179, 38, 30, 0.07);
+
+  --pos-shadow-sm: 0 4px 12px rgba(15, 67, 114, 0.06);
+  --pos-shadow-md: 0 10px 25px rgba(15, 67, 114, 0.08);
+
+  --pos-radius: 18px;
+  --pos-radius-sm: 14px;
+  --pos-radius-xs: 10px;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(27, 127, 140, 0.07), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(15, 67, 114, 0.07), transparent 32%),
+    linear-gradient(180deg, #f4f7fb 0%, #e9eff5 100%);
+  background-attachment: fixed;
+  color: var(--pos-text);
+  font-family:
+    'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial,
+    sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* -----------------------------------------------------------
+   Tarjeta
+   ----------------------------------------------------------- */
+.tarjeta {
+  background: var(--pos-bg-card);
+  border: 1px solid var(--pos-border);
+  border-radius: var(--pos-radius);
+  box-shadow: var(--pos-shadow-sm);
+}
+
+/* -----------------------------------------------------------
+   Botones
+   ----------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--pos-radius-xs);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--primario {
+  background: var(--pos-primary);
+  color: #fff;
+}
+
+.btn--primario:hover:not(:disabled) {
+  background: var(--pos-primary-dark);
+}
+
+.btn--secundario {
+  background: rgba(27, 127, 140, 0.1);
+  color: #14636e;
+  border-color: rgba(27, 127, 140, 0.32);
+}
+
+.btn--secundario:hover:not(:disabled) {
+  background: rgba(27, 127, 140, 0.16);
+}
+
+.btn--contorno {
+  background: transparent;
+  color: var(--pos-primary);
+  border-color: var(--pos-border-strong);
+}
+
+.btn--contorno:hover:not(:disabled) {
+  background: var(--pos-bg-soft-2);
+}
+
+.btn--neutro {
+  background: transparent;
+  color: var(--pos-text-soft);
+  border-color: var(--pos-border);
+}
+
+.btn--neutro:hover:not(:disabled) {
+  background: var(--pos-bg-soft);
+}
+
+.btn--bloque {
+  width: 100%;
+}
+
+/* -----------------------------------------------------------
+   Campos
+   ----------------------------------------------------------- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo__label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--pos-text-soft);
+}
+
+.campo__input {
+  width: 100%;
+  padding: 11px 13px;
+  font-size: 0.95rem;
+  color: var(--pos-text);
+  background: var(--pos-bg-card);
+  border: 1px solid var(--pos-border);
+  border-radius: var(--pos-radius-xs);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.campo__input:focus {
+  border-color: var(--pos-primary);
+  box-shadow: 0 0 0 3px rgba(15, 67, 114, 0.1);
+}
+
+/* -----------------------------------------------------------
+   Etiquetas de estado
+   ----------------------------------------------------------- */
+.etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.etiqueta--pagado {
+  color: var(--pos-success);
+  background: var(--pos-success-soft);
+  border: 1px solid rgba(26, 122, 50, 0.24);
+}
+
+.etiqueta--pendiente {
+  color: var(--pos-warning);
+  background: var(--pos-warning-soft);
+  border: 1px solid rgba(255, 176, 32, 0.34);
+}
+
+.etiqueta--vencido {
+  color: var(--pos-danger);
+  background: var(--pos-danger-soft);
+  border: 1px solid rgba(179, 38, 30, 0.22);
+}
+
+/* -----------------------------------------------------------
+   Avisos
+   ----------------------------------------------------------- */
+.aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 13px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  border-radius: var(--pos-radius-xs);
+}
+
+.aviso--error {
+  color: var(--pos-danger);
+  background: var(--pos-danger-soft);
+  border: 1px solid rgba(179, 38, 30, 0.2);
+  font-weight: 600;
+}
+
+.aviso--atencion {
+  color: var(--pos-warning);
+  background: var(--pos-warning-soft);
+  border: 1px solid rgba(255, 176, 32, 0.3);
+}
+
+.aviso--info {
+  color: var(--pos-text-soft);
+  background: var(--pos-bg-soft-2);
+  border: 1px solid var(--pos-border-soft);
+}
+
+/* -----------------------------------------------------------
+   Estados vacios / carga
+   ----------------------------------------------------------- */
+.estado-vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px 20px;
+  color: var(--pos-text-soft);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 2.5px solid rgba(15, 67, 114, 0.18);
+  border-top-color: var(--pos-primary);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+.spinner--sm {
+  width: 15px;
+  height: 15px;
+  border-width: 2px;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -----------------------------------------------------------
+   Utilidades
+   ----------------------------------------------------------- */
+.monto {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.mono {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.78rem;
+}

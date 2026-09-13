@@ -1,0 +1,81 @@
+# ──────────────────────────────────────────────
+#  Dependencias
+# ──────────────────────────────────────────────
+# El repositorio tiene dos package.json: el de la raiz (Capacitor) y el de la
+# aplicacion. Este patron cubre los dos y cualquiera que se agregue despues.
+**/node_modules/
+
+# ──────────────────────────────────────────────
+#  Secretos — NADA de esto debe versionarse
+# ──────────────────────────────────────────────
+# Llevan la API Key del proxy qr-banco-economico. `.env.example` si se versiona:
+# es la plantilla, y solo tiene marcadores de posicion.
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Firmas de Android. Una llave de firma filtrada permite publicar un APK que el
+# dispositivo acepta como si fuera el nuestro.
+*.keystore
+*.jks
+key.properties
+google-services.json
+
+# ──────────────────────────────────────────────
+#  Salidas de compilacion
+# ──────────────────────────────────────────────
+**/dist/
+**/dist-ssr/
+**/www/
+**/build/
+**/coverage/
+*.tsbuildinfo
+
+# Vite
+*.timestamp-*-*.mjs
+.vite/
+
+# ──────────────────────────────────────────────
+#  Capacitor
+# ──────────────────────────────────────────────
+# Los proyectos nativos `android/` e `ios/` SI se versionan —llevan permisos,
+# configuracion de Gradle y cambios hechos a mano que `cap sync` no regenera—,
+# pero lo que `cap sync` copia dentro de ellos, no: se reconstruye en cada
+# sincronizacion y versionarlo produce conflictos en cada build.
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/capacitor-cordova-android-plugins/
+android/.gradle/
+android/local.properties
+ios/App/App/public/
+ios/App/App/capacitor.config.json
+ios/App/Pods/
+
+# ──────────────────────────────────────────────
+#  Editores
+# ──────────────────────────────────────────────
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.user
+*.ntvs*
+*.njsproj
+*.sw?
+
+# ──────────────────────────────────────────────
+#  Sistema operativo y registros
+# ──────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tmp
+*~
+.eslintcache

@@ -1,0 +1,8 @@
+{
+  "appId": "com.gamatek.cobromovil",
+  "appName": "android",
+  "webDir": "dist",
+  "android": {
+    "allowMixedContent": true
+  }
+}
