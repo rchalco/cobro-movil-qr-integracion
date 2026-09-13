@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    El proxy qr-banco-economico se alcanza por HTTP durante la demostracion, y desde
-    Android 9 el trafico en claro esta bloqueado por defecto. Sin este archivo TODA
-    llamada al proxy falla, y falla en la capa de red: la aplicacion solo ve «no hay
-    conexion con el servidor», sin pista de que la causa es esta.
+    El proxy qr-banco-economico se alcanza por HTTP, y desde Android 9 el trafico en claro
+    esta bloqueado por defecto. Sin este archivo TODA llamada al proxy falla, y falla en la
+    capa de red: la aplicacion solo ve «no hay conexion con el servidor», sin pista de que
+    la causa es esta.
 
     Se habilita por dominio y no de forma general (`cleartextTrafficPermitted` en
-    base-config) para que el permiso no alcance a cualquier servidor que la aplicacion
+    base-config) para que el permiso no alcance a cualquier otro servidor que la aplicacion
     llegue a contactar.
 
-    PARA PROBAR EN UN TELEFONO REAL: agregue aqui la IP de la maquina donde corre el
-    proxy, con el mismo formato que las de abajo, y vuelva a compilar.
+    OJO: aqui van host o IP, SIN esquema ni puerto. El puerto no se declara; habilitar
+    155.138.212.216 habilita el trafico en claro a esa IP en cualquier puerto.
+
+    PARA AGREGAR OTRO SERVIDOR: copie una linea <domain> y ponga su host o IP; despues
+    `npm run android:sync` y recompile.
 -->
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
+        <!-- Servidor de la demostracion. Es una IP publica y el trafico va en claro: ver
+             la nota del README sobre lo que eso expone. -->
+        <domain includeSubdomains="false">155.138.212.216</domain>
+
         <!-- Emulador de Android: 10.0.2.2 es la maquina anfitriona vista desde el
-             telefono emulado. `localhost` dentro del emulador es el propio telefono. -->
+             telefono emulado. -->
         <domain includeSubdomains="false">10.0.2.2</domain>
+
+        <!-- NO QUITAR. Con `androidScheme: 'http'` el WebView sirve la propia aplicacion
+             desde `http://localhost`: si se bloquea el trafico en claro a localhost, no
+             falla una llamada, no carga la aplicacion entera y la pantalla queda en
+             blanco sin ningun mensaje. -->
         <domain includeSubdomains="false">localhost</domain>
         <domain includeSubdomains="false">127.0.0.1</domain>
-
-        <!-- Ejemplo para un telefono real en la misma red. Descomente y ajuste:
-        <domain includeSubdomains="false">192.168.1.100</domain>
-        -->
     </domain-config>
 </network-security-config>

@@ -1,8 +1,0 @@
-{
-  "appId": "bo.com.bancosol.cobromovilqr.demo",
-  "appName": "Cobro Movil QR",
-  "webDir": "dist",
-  "android": {
-    "allowMixedContent": true
-  }
-}
