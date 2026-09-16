@@ -32,6 +32,12 @@ const config: CapacitorConfig = {
     androidScheme: 'http',
   },
 
+  plugins: {
+    CapacitorHttp: {
+      enabled: true,
+    },
+  },
+
   android: {
     /**
      * Ya no hace falta para alcanzar al proxy —con el origen en `http` no hay contenido
