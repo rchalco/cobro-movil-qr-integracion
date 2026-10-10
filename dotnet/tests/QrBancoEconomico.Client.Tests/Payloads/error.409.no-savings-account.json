@@ -1,0 +1,1 @@
+{ "responseCode": 1, "message": "El suscriptor 'demo' no tiene cuenta de ahorro asociada; cárguela con PATCH /api/admin/subscribers/{id} antes de emitir QR." }

@@ -1,0 +1,10 @@
+{
+  "transactionId": "DEMO-0001-20261010103015-1A2B3C4D",
+  "currency": "BOB",
+  "amount": 350.50,
+  "description": "Cuota 4/12 credito 100200300",
+  "dueDate": "2026-10-11",
+  "singleUse": true,
+  "modifyAmount": false,
+  "branchCode": "0001"
+}

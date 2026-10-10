@@ -1,0 +1,13 @@
+bin/
+obj/
+TestResults/
+*.user
+# Configuracion local con la API Key del proxy. Nunca se versiona.
+appsettings.*.local.json
+.runsettings.local
+.env
+.env.*
+secrets.json
+*.pfx
+*.pem
+*.p12

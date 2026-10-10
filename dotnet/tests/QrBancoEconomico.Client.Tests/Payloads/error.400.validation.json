@@ -1,0 +1,9 @@
+{
+  "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+  "title": "One or more validation errors occurred.",
+  "status": 400,
+  "errors": {
+    "Amount": [ "amount debe ser mayor que 0 cuando modifyAmount es false." ]
+  },
+  "traceId": "00-11111111111111111111111111111111-2222222222222222-00"
+}
