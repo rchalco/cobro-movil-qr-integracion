@@ -12,13 +12,13 @@ public class SimpleTests(ITestOutputHelper output)
 {
     // ─── Conexion ────────────────────────────────────────────────────────────
     private const string BaseUrl = "http://155.138.212.216:8043";
-    private const string ApiKey = "";              // NO haga commit con una clave real
+    private const string ApiKey = "DEEC9E06-63E0-4A4F-8694-CE7F31BF4973";              // NO haga commit con una clave real
     private const string? BanecoAccount = null;    // p. ej. "recaudos-01"
 
     // ─── Datos de las llamadas ───────────────────────────────────────────────
     private static readonly DateOnly PaidDate = new(2026, 10, 10);
     private const string QrIdToFind = "QR_ID_A_BUSCAR";
-    private const string TransactionId = "SIMPLE-0001";  // debe ser unico por emision
+    private  readonly string TransactionId = new Guid().ToString("N").ToUpperInvariant();  // debe ser unico por emision
     private const double Amount = 0.01;
     private const string Currency = "BOB";
     private const string BranchCode = "0001";

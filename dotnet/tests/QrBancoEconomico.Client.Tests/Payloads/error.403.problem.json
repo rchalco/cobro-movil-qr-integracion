@@ -1,7 +1,0 @@
-{
-  "type": "https://httpstatuses.io/403",
-  "title": "Alcance insuficiente",
-  "status": 403,
-  "detail": "La API Key es válida pero no tiene el alcance requerido por este recurso.",
-  "traceId": "0HN7DEMO0000:00000002"
-}

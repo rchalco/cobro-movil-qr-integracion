@@ -1,7 +1,0 @@
-{
-  "type": "https://httpstatuses.io/401",
-  "title": "No autenticado",
-  "status": 401,
-  "detail": "API Key revocada.",
-  "traceId": "0HN7DEMO0000:00000001"
-}

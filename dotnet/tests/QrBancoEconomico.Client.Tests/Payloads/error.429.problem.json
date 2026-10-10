@@ -1,7 +1,0 @@
-{
-  "type": "https://httpstatuses.io/429",
-  "title": "Cuota excedida",
-  "status": 429,
-  "detail": "Se superó el límite de solicitudes por minuto asignado al suscriptor.",
-  "traceId": "0HN7DEMO0000:00000003"
-}
